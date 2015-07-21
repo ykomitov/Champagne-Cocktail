@@ -8,15 +8,18 @@ var GameEngines = function() {
             return this;
         }
 
-        // check this, not working
         function start() {
+            var gameObjects = this.gameObjects,
+                physicsEngine = this.physicsEngine
+                renderEngine = this.renderEngine;
+
             function gameLoop() {
-                this.physicsEngine.updateState(this.gameObjects);
-                this.renderEngine.renderState(this.gameObjects);
-                requestAnimationFrame(gameLoop.call(this));
+                physicsEngine.updateState(gameObjects);
+                renderEngine.renderState(gameObjects);
+                requestAnimationFrame(gameLoop);
             }
 
-            gameLoop.call(this);
+            gameLoop();
         }
 
         return {
