@@ -4,7 +4,7 @@ var PhysicsEngines = (function() {
 
         function init(inputProvider) {
             this.inputProvider = inputProvider;
-
+            this.speed = 1;
             return this;
         }
 
@@ -14,8 +14,8 @@ var PhysicsEngines = (function() {
 
         function updateSnake(snake) {
             var input = this.inputProvider.getDirection();
-            var updateX = Globals.speed,
-                updateY = Globals.speed;
+            var updateX = this.speed,
+                updateY = this.speed;
 
             if (!(input === 'other' || input === '')) {
                 snake.direction = this.inputProvider.getDirection();
