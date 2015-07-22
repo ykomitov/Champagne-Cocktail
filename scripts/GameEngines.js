@@ -7,6 +7,10 @@ var GameEngines = function() {
             var snake = Object.create(WorldObjects.snake)
                 .init(50,15,100,100,2);
             this.gameObjects.snake = snake;
+            this.gameObjects.walls = [];
+            var wall = Object.create(WorldObjects.wall)
+                .init(200, 200, 30);
+            this.gameObjects.walls.push(wall);
             return this;
         }
 

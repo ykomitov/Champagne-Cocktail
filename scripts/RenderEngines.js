@@ -23,6 +23,7 @@ var RenderEngines = (function() {
         function renderState(worldObjects) {
             this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
             renderSnake.call(this, worldObjects.snake);
+            renderWalls.call(this, worldObjects.walls);
             // this.layer.draw();
         }
 
@@ -35,6 +36,18 @@ var RenderEngines = (function() {
                 ctx.arc(snake.tail[i].x, snake.tail[i].y, snake.radius, 0, 2 * Math.PI, false);
                 ctx.fill();
             }
+        }
+
+        function renderWalls(walls) {
+            var ctx = this.ctx;
+            walls.forEach(function(wall) {
+                ctx.beginPath();
+                ctx.fillStyle = '#111';
+                ctx.rect(wall.x - wall.size/2, wall.y-wall.size/2, wall.size, wall.size);
+                // ctx.arc(wall.x, wall.y, wall.size, 0, 2 * Math.PI, false);
+                ctx.fill();
+                ctx.stroke();
+            });
         }
 
         return {
