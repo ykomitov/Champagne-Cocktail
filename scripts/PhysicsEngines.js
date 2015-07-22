@@ -4,7 +4,7 @@ var PhysicsEngines = (function() {
 
         function init(inputProvider) {
             this.inputProvider = inputProvider;
-            this.world = {
+            this.worldSize = {
                 x: 640,
                 y: 480
             };
@@ -22,11 +22,11 @@ var PhysicsEngines = (function() {
                 updateY = 1;
 
             function isOutOfWorld() {
-                if (snake.headX < 0 || this.world.x < snake.headX) {
+                if (snake.headX < 0 || this.worldSize.x < snake.headX) {
                     return true;
                 }
 
-                if (snake.headY < 0 || this.world.y < snake.headY) {
+                if (snake.headY < 0 || this.worldSize.y < snake.headY) {
                     return true;
                 }
                 return false;
