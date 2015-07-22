@@ -13,13 +13,13 @@ var GameEngines = function() {
             var snake = Object.create(WorldObjects.snake)
                 .init(snakeStartLength, snakeStartRadius, snakeStartX, snakeStartY, 2);
             this.gameObjects.snake = snake;
-            this.gameObjects.walls = [];
 
             // generate walls
+            var walls = [];
             var wallsCount = 10;
             var wallMinSize = 15;
-            var wallMaxSize = 40;
-            while (this.gameObjects.walls.length < wallsCount) {
+            var wallMaxSize = 100;
+            while (walls.length < wallsCount) {
                 var x = Math.random() * physicsEngine.worldSize.x;
                 var y = Math.random() * physicsEngine.worldSize.y;
                 var size = 30 + Math.random() * (wallMaxSize - wallMinSize);
@@ -34,8 +34,9 @@ var GameEngines = function() {
 
                 var wall = Object.create(WorldObjects.wall)
                     .init(x, y, size);
-                this.gameObjects.walls.push(wall);
+                walls.push(wall);
             }
+            this.gameObjects.walls = walls;
 
             return this;
         }
