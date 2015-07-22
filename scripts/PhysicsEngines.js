@@ -33,6 +33,7 @@ var PhysicsEngines = (function() {
             }
 
             function checkCollisions() {
+                // can be improved, for now it just checks if the circle inside the box of the wall touches the head circle of the snake
                 return gameObjects.walls.some(function(wall) {
                     var deltaX = snake.headX - wall.x;
                     var deltaY = snake.headY - wall.y;
