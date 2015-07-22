@@ -17,8 +17,8 @@ var GameEngines = function() {
             // generate walls
             var walls = [];
             var wallsCount = 10;
-            var wallMinSize = 15;
-            var wallMaxSize = 100;
+            var wallMinSize = 50;
+            var wallMaxSize = 200;
             while (walls.length < wallsCount) {
                 var x = Math.random() * physicsEngine.worldSize.x;
                 var y = Math.random() * physicsEngine.worldSize.y;
