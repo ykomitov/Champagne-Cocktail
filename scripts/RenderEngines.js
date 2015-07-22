@@ -28,12 +28,11 @@ var RenderEngines = (function() {
 
         function renderSnake(snake) {
             var ctx = this.ctx;
-            // console.log(snake);
-            var tailLength = snake.trails.length-1-snake.length*snake.radius;
-            for (var i = (snake.trails.length - 1); i > 0 && i > tailLength; i -= 1) {
+
+            for (var i = (snake.tail.length - 1); i >= 0; i -= 1) {
                 ctx.beginPath();
                 ctx.fillStyle = '#aaa';
-                ctx.arc(snake.trails[i].x, snake.trails[i].y, snake.radius, 0, 2 * Math.PI, false);
+                ctx.arc(snake.tail[i].x, snake.tail[i].y, snake.radius, 0, 2 * Math.PI, false);
                 ctx.fill();
             }
         }

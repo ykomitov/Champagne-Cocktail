@@ -40,10 +40,13 @@ var PhysicsEngines = (function() {
 
             snake.headX += updateX;
             snake.headY += updateY;
-            snake.trails.push({
+            snake.tail.push({
                 x: snake.headX,
                 y: snake.headY
             });
+            if (snake.tail.length > snake.length) {
+                snake.tail.shift();
+            }
         }
 
         return {
