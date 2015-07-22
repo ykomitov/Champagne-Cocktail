@@ -4,7 +4,9 @@ var GameEngines = function() {
             this.renderEngine = renderEngine;
             this.physicsEngine = physicsEngine;
             this.gameObjects = {};
-            this.gameObjects.snake = Object.create(WorldObjects.snake);
+            var snake = Object.create(WorldObjects.snake)
+                .init(50,15,100,100,2);
+            this.gameObjects.snake = snake;
             return this;
         }
 

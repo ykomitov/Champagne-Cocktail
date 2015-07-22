@@ -1,15 +1,39 @@
 var WorldObjects = function() {
-    var snake = {
-        length: 50,
-        radius: 15,
-        headX: 100,
-        headY: 100,
-        tail: [{x:100, y:100}],
-        direction: 'right',
-        speed: 2
-    }
+    var snake = function() {
+        function init(length, radius, x, y, speed) {
+            this.length = length;
+            this.radius = radius;
+            this.headX = x;
+            this.headY = y;
+            this.tail = [{
+                x: 100,
+                y: 100
+            }];
+            this.direction = 'right';
+            this.speed = speed;
+            return this;
+        }
+
+        return {
+            init: init
+        }
+    }();
+
+    var wall = function() {
+        function init(x, y, size) {
+            this.x = x;
+            this.y = y;
+            this.size = size
+            return this;
+        }
+
+        return {
+            init: init
+        }
+    }();
 
     return {
-        snake: snake
+        snake: snake,
+        wall: wall
     }
 }();
