@@ -1,7 +1,7 @@
 var WorldObjects = function() {
     var snake = {
         length: 50,
-        radius: 10,
+        radius: 15,
         headX: 100,
         headY: 100,
         tail: [{x:100, y:100}],

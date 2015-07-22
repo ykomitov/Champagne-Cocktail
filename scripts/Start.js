@@ -5,4 +5,5 @@
     var gameEngine = Object.create(GameEngines.StandartGameEngine).init(renderEngine, physicsEngine);
 
     gameEngine.start();
+    
 }());

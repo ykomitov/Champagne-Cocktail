@@ -16,7 +16,9 @@ var GameEngines = function() {
             function gameLoop() {
                 physicsEngine.updateState(gameObjects);
                 renderEngine.renderState(gameObjects);
-                requestAnimationFrame(gameLoop);
+                if (!Globals.gameOver) {
+                    requestAnimationFrame(gameLoop);
+                }
             }
 
             gameLoop();

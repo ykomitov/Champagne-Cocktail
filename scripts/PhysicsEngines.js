@@ -4,6 +4,10 @@ var PhysicsEngines = (function() {
 
         function init(inputProvider) {
             this.inputProvider = inputProvider;
+            this.world = {
+                x: 640,
+                y: 480
+            };
             return this;
         }
 
@@ -15,6 +19,17 @@ var PhysicsEngines = (function() {
             var input = this.inputProvider.getDirection();
             var updateX = 1,
                 updateY = 1;
+
+            function checkCollision() {
+                if (snake.headX < 0 || this.world.x < snake.headX ) {
+                    return true;
+                }
+
+                if (snake.headY < 0 || this.world.y < snake.headY ) {
+                    return true;
+                }
+                return false;
+            }
 
             if (!(input === 'other' || input === '')) {
                 snake.direction = this.inputProvider.getDirection();
@@ -44,9 +59,14 @@ var PhysicsEngines = (function() {
                 });
                 snake.headX += updateX;
                 snake.headY += updateY;
+
                 if (snake.tail.length > snake.length) {
                     snake.tail.shift();
                 }
+            }
+
+            if (checkCollision.call(this)) {
+                Globals.gameOver = true;
             }
         }
 
