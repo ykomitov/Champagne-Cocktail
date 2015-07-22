@@ -20,7 +20,7 @@ var PhysicsEngines = (function() {
             var updateX = 1,
                 updateY = 1;
 
-            function checkCollision() {
+            function isOutOfWorld() {
                 if (snake.headX < 0 || this.world.x < snake.headX ) {
                     return true;
                 }
@@ -65,7 +65,7 @@ var PhysicsEngines = (function() {
                 }
             }
 
-            if (checkCollision.call(this)) {
+            if (isOutOfWorld.call(this)) {
                 Globals.gameOver = true;
             }
         }
