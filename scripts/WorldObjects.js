@@ -5,7 +5,8 @@ var WorldObjects = function() {
         headX: 100,
         headY: 100,
         tail: [{x:100, y:100}],
-        direction: 'right'
+        direction: 'right',
+        speed: 2
     }
 
     return {

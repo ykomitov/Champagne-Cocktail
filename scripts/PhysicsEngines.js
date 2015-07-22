@@ -4,7 +4,6 @@ var PhysicsEngines = (function() {
 
         function init(inputProvider) {
             this.inputProvider = inputProvider;
-            this.speed = 1;
             return this;
         }
 
@@ -14,8 +13,8 @@ var PhysicsEngines = (function() {
 
         function updateSnake(snake) {
             var input = this.inputProvider.getDirection();
-            var updateX = this.speed,
-                updateY = this.speed;
+            var updateX = 1,
+                updateY = 1;
 
             if (!(input === 'other' || input === '')) {
                 snake.direction = this.inputProvider.getDirection();
@@ -38,14 +37,16 @@ var PhysicsEngines = (function() {
                     break;
             }
 
-            snake.headX += updateX;
-            snake.headY += updateY;
-            snake.tail.push({
-                x: snake.headX,
-                y: snake.headY
-            });
-            if (snake.tail.length > snake.length) {
-                snake.tail.shift();
+            for (var i = 0; i < snake.speed; i++) {
+                snake.tail.push({
+                    x: snake.headX + updateX,
+                    y: snake.headY + updateY
+                });
+                snake.headX += updateX;
+                snake.headY += updateY;
+                if (snake.tail.length > snake.length) {
+                    snake.tail.shift();
+                }
             }
         }
 
