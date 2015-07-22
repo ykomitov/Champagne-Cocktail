@@ -1,32 +1,42 @@
 var InputProviders = function() {
     var Keyboard = function() {
-        var pressedKey = '';
+        var currentInput = {
+            p1: 'other'
+        };
 
         function init() {
+
             document.onkeydown = function(e) {
+                var input = 'other';
                 if (e.keyCode === 37) {
-                    pressedKey = 'left';
+                    input = 'left';
                 } else if (e.keyCode === 38) {
-                    pressedKey = 'up';
+                    input = 'up';
                 } else if (e.keyCode === 39) {
-                    pressedKey = 'right';
+                    input = 'right';
                 } else if (e.keyCode === 40) {
-                    pressedKey = 'down';
+                    input = 'down';
                 } else {
-                    pressedKey = 'other';
+                    input = 'other';
                 }
+
+                currentInput.p1 = input;
             };
+
+            document.onkeyup = function() {
+                currentInput.p1 = 'other';
+            }
+
             return this;
         }
 
-        function getDirection() {
-            return pressedKey;
-            pressedKey = '';
+        function getInput() {
+            return currentInput;
         }
 
         return {
             init: init,
-            getDirection: getDirection
+            getInput: getInput
         }
     }();
 

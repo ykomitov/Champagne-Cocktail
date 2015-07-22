@@ -3,16 +3,16 @@ var RenderEngines = (function() {
     var CanvasRenderer = function() {
 
         function init(width, height) {
-            // this.stage = new Kinetic.Stage({
-            //     container: 'canvas-container',
-            //     width: width,
-            //     height: height
-            // });
+            this.stage = new Kinetic.Stage({
+                container: 'canvas-container',
+                width: width,
+                height: height
+            });
 
-            // this.layer = new Kinetic.Layer();
-            // this.stage.add(this.layer);
+            this.layer = new Kinetic.Layer();
+            this.stage.add(this.layer);
 
-            this.canvas = document.getElementById('canvas-region');
+            this.canvas = document.getElementsByTagName('canvas')[0];
             this.canvas.width = width;
             this.canvas.height = height;
             this.ctx = this.canvas.getContext('2d');

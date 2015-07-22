@@ -16,7 +16,7 @@ var PhysicsEngines = (function() {
         }
 
         function updateSnake(snake) {
-            var input = this.inputProvider.getDirection();
+            var inputDirection = this.inputProvider.getInput().p1;
             var updateX = 1,
                 updateY = 1;
 
@@ -31,8 +31,8 @@ var PhysicsEngines = (function() {
                 return false;
             }
 
-            if (!(input === 'other' || input === '')) {
-                snake.direction = this.inputProvider.getDirection();
+            if (!(inputDirection === 'other' || inputDirection === '')) {
+                snake.direction = inputDirection;
             }
 
             switch (snake.direction) {
