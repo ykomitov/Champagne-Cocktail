@@ -46,7 +46,7 @@ var RenderEngines = (function() {
                 ctx.rect(wall.x - wall.size/2, wall.y-wall.size/2, wall.size, wall.size);
                 // ctx.arc(wall.x, wall.y, wall.size, 0, 2 * Math.PI, false);
                 ctx.fill();
-                ctx.stroke();
+                // ctx.stroke();
             });
         }
 

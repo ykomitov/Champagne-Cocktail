@@ -5,16 +5,33 @@ var GameEngines = function() {
             this.physicsEngine = physicsEngine;
             this.gameObjects = {};
 
+            // generate the snake
+            var snakeStartX = 100;
+            var snakeStartY = 100;
+            var snakeStartLength = 50;
+            var snakeStartRadius = 15;
             var snake = Object.create(WorldObjects.snake)
-                .init(50, 15, 100, 100, 2);
+                .init(snakeStartLength, snakeStartRadius, snakeStartX, snakeStartY, 2);
             this.gameObjects.snake = snake;
             this.gameObjects.walls = [];
 
-            var wallsCount = 15;
-            for (var i = 0; i < wallsCount; i++) {
-                var x = Math.random()*physicsEngine.worldSize.x;
-                var y = Math.random()*physicsEngine.worldSize.y;
-                var size = 10 + Math.random()*snake.radius;
+            // generate walls
+            var wallsCount = 10;
+            var wallMinSize = 15;
+            var wallMaxSize = 40;
+            while (this.gameObjects.walls.length < wallsCount) {
+                var x = Math.random() * physicsEngine.worldSize.x;
+                var y = Math.random() * physicsEngine.worldSize.y;
+                var size = 30 + Math.random() * (wallMaxSize - wallMinSize);
+
+                // don`t generate wall that is too close to snake start position
+                if (x > snakeStartX - size - snakeStartRadius &&
+                    x < snakeStartX + size + snakeStartRadius &&
+                    y > snakeStartY - size - snakeStartRadius &&
+                    y < snakeStartY + size + snakeStartRadius) {
+                    continue;
+                }
+
                 var wall = Object.create(WorldObjects.wall)
                     .init(x, y, size);
                 this.gameObjects.walls.push(wall);
