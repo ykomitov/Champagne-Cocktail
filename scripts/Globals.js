@@ -3,5 +3,5 @@ var Globals = function() {
 
     return {
         gameOver: gameOver,
-    }
+    };
 }();

@@ -43,10 +43,6 @@ var GameEngines = function() {
             foodY = (Math.random() * physicsEngine.worldSize.y - 2) + 1,
             food = Object.create(WorldObjects.food).init(foodX, foodY, false);
             
-            if (food.x === snake.headX && food.y === snake.headY) {
-                food = Object.create(WorldObjects.food).init(foodX, foodY, true);
-            }
-
             this.gameObjects.food = food;
 
             return this;
@@ -60,6 +56,9 @@ var GameEngines = function() {
             function gameLoop() {
                 physicsEngine.updateState(gameObjects);
                 renderEngine.renderState(gameObjects);
+                if (physicsEngine.eatFood(gameObjects)) {
+                    //renderEngine.clearFood.call(this, gameObjects.food);
+                }
                 if (!Globals.gameOver) {
                     requestAnimationFrame(gameLoop);
                 }
