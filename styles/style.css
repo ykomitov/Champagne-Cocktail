@@ -1,3 +1,7 @@
 canvas  {
-    border: 3px solid black !important;
+    border: 3px solid green !important;
+
+}
+.kineticjs-content canvas {
+	margin: auto !important;*/
 }
