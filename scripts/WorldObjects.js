@@ -33,9 +33,10 @@ var WorldObjects = function() {
     }();
 
     var food = function(){
-        function init(x, y){
+        function init(x, y, isEaten){
             this.x = x;
             this.y = y;
+            this.isEaten = isEaten;
             this.radius = 15;
 
             return this;

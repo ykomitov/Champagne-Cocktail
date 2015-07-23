@@ -18,6 +18,7 @@ var PhysicsEngines = (function() {
 
         function updateSnake(gameObjects) {
             var snake = gameObjects.snake;
+            var food = gameObjects.food;
             var inputDirection = this.inputProvider.getInput().p1;
             var updateX = 1,
                 updateY = 1;
@@ -97,9 +98,21 @@ var PhysicsEngines = (function() {
 
         }
 
+        function eatFood(gameObjects){
+                var isEaten = false,
+                snake = gameObjects.snake,
+                food = gameObjects.food;
+                if (snake.headX == food.x && snake.headY == food.y) {
+                    isEaten = true;
+                }
+
+                return isEaten;
+            }
+
         return {
             init: init,
             updateState: updateState,
+            eatFood: eatFood
         };
     }();
 
