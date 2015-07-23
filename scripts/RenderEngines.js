@@ -24,6 +24,7 @@ var RenderEngines = (function() {
             this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
             renderSnake.call(this, worldObjects.snake);
             renderWalls.call(this, worldObjects.walls);
+            renderFood.call(this, worldObjects.food);
             // this.layer.draw();
         }
 
@@ -50,14 +51,27 @@ var RenderEngines = (function() {
             });
         }
 
+        function renderFood(food){
+            var ctx = this.ctx;
+
+            ctx.beginPath();
+            ctx.fillStyle = '#aaa';
+            ctx.arc(food.x, food.y, food.radius, 0, 2*Math.PI);
+            ctx.fill();
+        }
+
+        function clearFood(food){
+            ctx.clearRect(food.x - food.radius, food.y - food.radius, food.radius, food.radius);
+        }
+
         return {
             init: init,
             renderState: renderState
-        }
+        };
     }();
 
     return {
         CanvasRenderer: CanvasRenderer
-    }
+    };
 
 }());

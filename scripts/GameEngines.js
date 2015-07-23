@@ -17,11 +17,11 @@ var GameEngines = function() {
             // generate walls
             var walls = [];
             var wallsCount = 10;
-            var wallMinSize = 50;
-            var wallMaxSize = 200;
+            var wallMinSize = 2;
+            var wallMaxSize = 10;
             while (walls.length < wallsCount) {
-                var x = Math.random() * physicsEngine.worldSize.x;
-                var y = Math.random() * physicsEngine.worldSize.y;
+                var x = Math.random() * this.physicsEngine.worldSize.x;
+                var y = Math.random() * this.physicsEngine.worldSize.y;
                 var size = 30 + Math.random() * (wallMaxSize - wallMinSize);
 
                 // don`t generate wall that is too close to snake start position
@@ -38,12 +38,23 @@ var GameEngines = function() {
             }
             this.gameObjects.walls = walls;
 
+            //generate food
+            var foodX = (Math.random() * physicsEngine.worldSize.x - 2) + 1,
+            foodY = (Math.random() * physicsEngine.worldSize.y - 2) + 1,
+            food = Object.create(WorldObjects.food).init(foodX, foodY, false);
+            
+            if (food.x === snake.headX && food.y === snake.headY) {
+                food = Object.create(WorldObjects.food).init(foodX, foodY, true);
+            }
+
+            this.gameObjects.food = food;
+
             return this;
         }
 
         function start() {
             var gameObjects = this.gameObjects,
-                physicsEngine = this.physicsEngine
+                physicsEngine = this.physicsEngine;
             renderEngine = this.renderEngine;
 
             function gameLoop() {
@@ -60,10 +71,10 @@ var GameEngines = function() {
         return {
             init: init,
             start: start
-        }
+        };
     }();
 
     return {
         StandartGameEngine: StandartGameEngine
-    }
+    };
 }();

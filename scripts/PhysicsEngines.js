@@ -13,6 +13,7 @@ var PhysicsEngines = (function() {
 
         function updateState(gameObjects) {
             updateSnake.call(this, gameObjects);
+            //updateFood.call(this, gameObjects);
         }
 
         function updateSnake(gameObjects) {
@@ -98,7 +99,7 @@ var PhysicsEngines = (function() {
 
         return {
             init: init,
-            updateState: updateState
+            updateState: updateState,
         };
     }();
 

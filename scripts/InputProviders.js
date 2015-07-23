@@ -25,7 +25,7 @@ var InputProviders = function() {
 
             document.onkeyup = function() {
                 currentInput.p1 = 'other';
-            }
+            };
 
             return this;
         }
@@ -37,10 +37,10 @@ var InputProviders = function() {
         return {
             init: init,
             getInput: getInput
-        }
+        };
     }();
 
     return {
         Keyboard: Keyboard
-    }
+    };
 }();

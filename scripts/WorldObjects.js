@@ -16,24 +16,39 @@ var WorldObjects = function() {
 
         return {
             init: init
-        }
+        };
     }();
 
     var wall = function() {
         function init(x, y, size) {
             this.x = x;
             this.y = y;
-            this.size = size
+            this.size = size;
             return this;
         }
 
         return {
             init: init
+        };
+    }();
+
+    var food = function(){
+        function init(x, y){
+            this.x = x;
+            this.y = y;
+            this.radius = 15;
+
+            return this;
         }
+
+        return {
+            init: init
+        };
     }();
 
     return {
         snake: snake,
-        wall: wall
-    }
+        wall: wall,
+        food: food
+    };
 }();
